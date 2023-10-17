@@ -3,7 +3,7 @@ const menuHamIcon = document.querySelector('.menu');
 const menuCarritoIcon = document.querySelector('.navbar-shopping-cart');
 const desktopMenu = document.querySelector('.desktop-menu');
 const mobileMenu = document.querySelector('.mobile-menu');
-const aside = document.querySelector('.product-detail');
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 const cardsContainer = document.querySelector('.cards-container');
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
@@ -11,20 +11,20 @@ menuHamIcon.addEventListener('click', toggleMobileMenu);
 menuCarritoIcon.addEventListener('click', toggleCarritoAside);
 
 function toggleDesktopMenu() {
-  const isAsideClosed = aside.classList.contains('inactive');
+  const isshoppingCartContainerClosed = shoppingCartContainer.classList.contains('inactive');
 
-  if (!isAsideClosed) {
-    aside.classList.add('inactive');
+  if (!isshoppingCartContainerClosed) {
+    shoppingCartContainer.classList.add('inactive');
   }
   
   desktopMenu.classList.toggle('inactive');
 }
 
 function toggleMobileMenu() {
-  const isAsideClosed = aside.classList.contains('inactive');
+  const isshoppingCartContainerClosed = shoppingCartContainer.classList.contains('inactive');
 
-  if (!isAsideClosed) {
-    aside.classList.add('inactive'); 
+  if (!isshoppingCartContainerClosed) {
+    shoppingCartContainer.classList.add('inactive'); 
   }
   
   mobileMenu.classList.toggle('inactive');
@@ -32,28 +32,30 @@ function toggleMobileMenu() {
 
 function toggleCarritoAside() {
   const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
+  const isDesktopMenuClosed = desktopMenu.classList.contains('inactive');//mi solucion
   
-  if (!isMobileMenuClosed) {
+  if (!isMobileMenuClosed || !isDesktopMenuClosed ) {//mi solucion
     mobileMenu.classList.add('inactive'); 
+    desktopMenu.classList.add('inactive'); //mi solucion
   }
   
-  aside.classList.toggle('inactive');
+  shoppingCartContainer.classList.toggle('inactive');
 }
 
 const productList = [];
 productList.push({
   name: 'Bike',
-  price: 120,
+  price: 1200,
   image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
 });
 productList.push({
   name: 'Pantalla',
-  price: 220,
+  price: 22200,
   image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
 });
 productList.push({
   name: 'Compu',
-  price: 620,
+  price: 966222000,
   image: 'https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
 });
 
